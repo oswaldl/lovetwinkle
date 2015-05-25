@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TheaterJS, a typing effect mimicking human behavior.</title>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cutive">
+        <link rel="stylesheet" href="build/styles.css">
+    </head>
+
+    <body>
+        <div class="outer">
+            <div class="inner">
+                <div class="wrapper">
+                    <div class="scene">
+                        <div>月老: <span id="middler"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="build/theater.js"></script>
+        <script>
+            (function () {
+                "use strict";
+
+                var theater = new TheaterJS();
+
+                theater
+                    .describe("middler", { speed: .16, accuracy: .6, invincibility: 4 }, "#middler")
+                    .describe("oswaldl", .6, "#oswaldl")
+                    .describe("twinkle", .6, "#twinkle");
+
+                theater
+                    .on("say:start, erase:start", function (eventName) {
+                        var self    = this,
+                            current = self.current.voice;
+
+                        self.utils.addClass(current, "saying");
+                    })
+                    .on("say:end, erase:end", function (eventName) {
+                        var self    = this,
+                            current = self.current.voice;
+
+                        self.utils.removeClass(current, "saying");
+                    });
+
+                theater
+                    .write("middler:这个是oswaldl平凡的故事。。。。", 400, toggleClass)
+                    .write("middler:oswaldl是一个典型的宅男，14年的时候年近30，年龄不小了，他开始意识到周围的变化，父母那一辈的孩子都基本结婚了，此时听着父母的唠叨特别心塞，因为他发现父母真的老了，真的管不住自己了。。。", 400, toggleClass)
+                    .write("middler:于是oswaldl开始着手寻找对象，事与愿违，屡次失败，经过大半年的努力，依旧毫无收获，他甚至开始觉得自己是上帝遗忘的孩子，并取名野流星。。。", 400, toggleClass)
+                    .write("middler:将近年末的时候他在网上认识一个叫twinkle的女孩。报着试一试的态度，他尝试去了解这个女孩，得知她刚来这个城市就一直在忙家里购房的事情，到处奔波非常繁忙，一段时间网聊后，一个特殊的日子也将近了——元宵节。。。",1000, toggleClass)
+                    .write("middler:oswaldl非常希望能在这么一个特别的日子和twinkle见一面，不管结果如何，都可以了却一件心上事，可是twinkle还是太忙了，那个晚上他们发生第一次争执。。。",400,  toggleClass)
+                    .write("middler:oswaldl心中存在不安的疑惑，元宵节就这么安静的过去了，他们的距离也逐渐拉开了，一个早晨，oswaldl收到twinkle发来的消息，并约定了见面的时间，oswaldl喜出望外。。。", 400, toggleClass)
+                    .write("middler:第一次见面非常糟糕，oswaldl在地铁口徘徊了1.5小时，看着人来人往，内心的心情和树叶下落一样迷离不定，最后他选择沉默离开了，就在他回到公司拿包的时候，twinkle的消息来了。。。", 400, toggleClass)
+                    .write("middler:就在那个地铁口，oswaldl看到了twinkle，在愤怒和开心双重心情交杂下，他仔细端详了她，她一直手不离机，步伐迈得很快，非常繁忙地打着各种电话，有这么几秒他感觉自己被遗忘了。。。", 400, toggleClass)
+                    .write("middler:由于太晚了，并没有找到非常合适的饭店，他们在一家火锅店坐了下来，在聊天中，oswaldl认识到twinkle是一个有见识有计划做事稳重的人才，开心的同时也意识到自己的差距，看着火锅冒出来的水雾染到twinkle的眼镜上，oswaldl突然感觉twinkle很可爱。。。", 400, toggleClass)
+                    .write("middler:饭后oswaldl还是表达了自己的希望继续交往的想法，twinkle很委婉的拒绝了，之后很长一段时间都是安静的，为了过个好年，两人也逐渐回到工作状态，直到年初二的晚上，oswaldl收到twinkle的消息，twinkle喝醉了。。。", 400, toggleClass)
+                    .write("middler:oswaldl很高兴又再次和twinkle联系上，聊起不应该喝酒，少喝酒，怎么减少喝酒对胃的伤害，可是这样的联系注定只是一个小插曲，很快twinkle就厌倦了酒这个话题，而一味追逐的oswaldl也厌倦了twinkle爱理不理的态度，年还没过完就分了。。。", 400, toggleClass)
+                    .write("middler:年后工作安顿后，oswaldl开始了新的求偶之路，他认识了年轻的晶晶，晶晶姑娘貌美如花，心底是跃跃欲试的爱玩叛逆分子，这位开朗的艺术家看到oswaldl的神情是各种惊讶：你是从火星来的么？你喜欢我？告诉我你是坏蛋吗？我喜欢的是坏坏的人哦！", 400, toggleClass)
+                    .write("middler:晶晶听了oswaldl的经历后，很义气的给与oswaldl两个第一次，第一次挽着oswaldl的右臂走过一段长长的街道，并在最后分手的时候给了拥抱。明知晶晶的玩物不恭的心态，那晚oswaldl想了很多。。。", 400, toggleClass)
+                    .write("middler:接下来的2周，oswaldl奋力追晶晶，但并未打动晶晶，对于晶晶的态度，oswaldl始终拿不定，他觉得或许是一种兄妹关系吧。。。", 400, toggleClass)
+                    .write("middler:再经过2段不痛不痒的。", 400, toggleClass)
+                    .write("middler:520一次偶然的接触，你要给我介绍对象，我忍不住再次表达了对你的爱。", toggleClass)
+                    .write("middler:周六就是你的生日了，你很忙，我们约定周日见，我很高兴地要了5分，并约定凑够100分就可以向你求婚。", 1600)
+                    .write("middler:午后我在外面的凳子上休息，你发消息告诉我下雨了。", 1000, toggleClass)
+                    .write("middler:你问我漂不漂亮，我说你非常漂亮，你不信，笑我不诚实。", 400, "No!", toggleClass)
+                    或者oswaldl能给与的不是twinkle想要的，
+                    .write(function () { theater.play(true); });
+
+                var body = document.getElementsByTagName("BODY")[0];
+
+                function toggleClass (className) {
+                    if (typeof className !== "string") className = "light";
+
+                    if (theater.utils.hasClass(body, className)) theater.utils.removeClass(body, className);
+                    else theater.utils.addClass(body, className);
+                }
+
+
+                window.theater = theater;
+            })();
+        </script>
+    </body>
+</html>
